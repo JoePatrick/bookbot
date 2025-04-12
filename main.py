@@ -6,11 +6,17 @@ def get_book_text(filepath):
         return f.read()
 
 def main():
-    filepath = "books/frankenstein.txt"
-    book_text = (get_book_text(filepath))
+    
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    else:
+        filepath = sys.argv[1]
+    
+    book_text = get_book_text(filepath)
     word_count = get_word_count(book_text)
     letter_count = get_letter_count(book_text)
-    letter_sort = (get_sorted_dict(letter_count))
+    letter_sort = get_sorted_dict(letter_count)
 
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {filepath}...")
